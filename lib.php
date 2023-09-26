@@ -6,7 +6,7 @@ function local_sgevea_get_survey_data()
 
     require_login();
 
-    $token = get_config('local_sgevea', 'token');
+    $token = get_config('local_sgevea', 'token'); 
     $status = get_config('local_sgevea', 'status');
     $apiurl = get_config('local_sgevea', 'apiurl');
 
