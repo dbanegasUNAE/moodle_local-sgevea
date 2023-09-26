@@ -3,7 +3,7 @@
 $manager2 = new \local_sgevea\survey_manager();
 $survey = $manager2->getOne();
 
-dep($survey);
+//dep($survey);
 
 $idSurvey = (isset($survey[0]['ID']) && !empty($survey[0]['ID'])) ? $survey[0]['ID'] : null;
 
@@ -17,7 +17,7 @@ if ($showModal) {
     $urlGenerada = construirURL($baseURL, $parametros);
     $externalSurveyUrl = $urlGenerada;
 
-    dep($externalSurveyUrl);
+    //dep($externalSurveyUrl);
 
     // Define el contenido del modal
     $modalContent = html_writer::start_tag('div', array('class' => 'modal-content'));

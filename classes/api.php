@@ -45,8 +45,8 @@ class api
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         //CONFIGS FOR SSL
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); //OPTIONAL
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); //OPTIONAL
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); //OPTIONAL
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); //OPTIONAL
 
 
         //WEBSERVICE METHOD
