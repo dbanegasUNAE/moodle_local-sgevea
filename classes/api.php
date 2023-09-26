@@ -1,8 +1,8 @@
 <?php
 
-namespace local_sgeveasurvey;
+namespace local_sgevea;
 
-//use local_sgeveasurvey\moodleApi;
+//use local_sgevea\moodleApi;
 use Exception;
 
 class api
@@ -12,8 +12,8 @@ class api
 
     public function __construct()
     {
-        $this->baseurl = get_config('local_sgeveasurvey', 'apiurl');
-        $this->token = get_config('local_sgeveasurvey', 'token');
+        $this->baseurl = get_config('local_sgevea', 'apiurl');
+        $this->token = get_config('local_sgevea', 'token');
     }
 
     public function request($endpoint, $method = 'GET', $data = [])

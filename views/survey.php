@@ -1,6 +1,6 @@
 <?php
 // Inicialización y obtención de encuestas.
-$manager2 = new \local_sgeveasurvey\survey_manager();
+$manager2 = new \local_sgevea\survey_manager();
 $survey = $manager2->getOne();
 
 dep($survey);
@@ -12,7 +12,7 @@ $showModal = (isset($idSurvey) && !empty($idSurvey)) ? TRUE : FALSE;
 if ($showModal) {
     // Continúa solo si $showModal es TRUE
 
-    $baseURL = "{$CFG->wwwroot}/local/sgeveasurvey/views/surveyForm.php";
+    $baseURL = "{$CFG->wwwroot}/local/sgevea/views/surveyForm.php";
     $parametros = array('surveyid' => $idSurvey);
     $urlGenerada = construirURL($baseURL, $parametros);
     $externalSurveyUrl = $urlGenerada;
@@ -43,5 +43,5 @@ if ($showModal) {
 ?>
 
 <!-- Scripts y estilos siempre necesarios -->
-<script src="<?php echo "{$CFG->wwwroot}/local/sgeveasurvey/js/modal.js" ?>"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo "{$CFG->wwwroot}/local/sgeveasurvey/css/modal.css" ?>" />
+<script src="<?php echo "{$CFG->wwwroot}/local/sgevea/js/modal.js" ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo "{$CFG->wwwroot}/local/sgevea/css/modal.css" ?>" />

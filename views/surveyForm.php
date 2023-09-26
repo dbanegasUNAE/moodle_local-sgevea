@@ -14,13 +14,13 @@ header('Content-Type: text/html');
 
 // Consumir el servicio y obtener el formulario HTML.
 
-$manager = new \local_sgeveasurvey\survey_manager();
+$manager = new \local_sgevea\survey_manager();
 $surveys = $manager->getAllSurveys();
 //$surveys = $manager->getAllSurveys();
 
 //var_dump($surveys);
 
-$manager = new \local_sgeveasurvey\survey_manager();
+$manager = new \local_sgevea\survey_manager();
 $surveyId = optional_param('surveyid', 0, PARAM_TEXT); // Asegúrate de ajustar el nombre del parámetro según tu necesidad.
 $formHtml = $manager->getSurveyFormById($surveyId);
 echo $formHtml;

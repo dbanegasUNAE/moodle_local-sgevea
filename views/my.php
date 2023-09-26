@@ -1,4 +1,4 @@
 <?php
-include("{$CFG->dirroot}/local/sgeveasurvey/lib.php");
-include("{$CFG->dirroot}/local/sgeveasurvey/views/surveys.php");
-include("{$CFG->dirroot}/local/sgeveasurvey/views/survey.php");
+include("{$CFG->dirroot}/local/sgevea/lib.php");
+include("{$CFG->dirroot}/local/sgevea/views/surveys.php");
+include("{$CFG->dirroot}/local/sgevea/views/survey.php");

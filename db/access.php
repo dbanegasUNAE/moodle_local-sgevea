@@ -2,7 +2,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
-    'local/sgeveaSurvey:manage' => array(
+    'local/sgevea:manage' => array(
         'riskbitmask' => RISK_CONFIG,
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,

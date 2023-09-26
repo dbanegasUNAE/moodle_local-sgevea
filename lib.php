@@ -1,14 +1,14 @@
 <?php
 
-function local_sgeveasurvey_get_survey_data()
+function local_sgevea_get_survey_data()
 {
     global $CFG;
 
     require_login();
 
-    $token = get_config('local_sgeveasurvey', 'token');
-    $status = get_config('local_sgeveasurvey', 'status');
-    $apiurl = get_config('local_sgeveasurvey', 'apiurl');
+    $token = get_config('local_sgevea', 'token');
+    $status = get_config('local_sgevea', 'status');
+    $apiurl = get_config('local_sgevea', 'apiurl');
 
     if (!$status) {
         return false;

@@ -1,6 +1,6 @@
 <?php
 
-namespace local_sgeveasurvey;
+namespace local_sgevea;
 
 class endpoint
 {
