@@ -20,16 +20,16 @@ if ($showModal) {
     //dep($externalSurveyUrl);
 
     // Define el contenido del modal
-    $modalContent = html_writer::start_tag('div', array('class' => 'modal-content'));
-    $modalContent .= html_writer::tag('button', '&times;', array('class' => 'close-modal', 'id' => 'closeModal'));
+    $modalContent = html_writer::start_tag('div', array('class' => 'modalSGEVEA-content'));
+    $modalContent .= html_writer::tag('button', '&times;', array('class' => 'modalSGEVEA-close', 'id' => 'closeModal'));
     $modalContent .= html_writer::tag('iframe', '', array(
         'src' => $externalSurveyUrl,
         'frameborder' => '0',
-        'class' => 'modal-iframe',
+        'class' => 'modalSGEVEA-iframe',
     ));
 
     $modalContent .= html_writer::end_tag('div');
-    echo html_writer::start_tag('div', array('class' => 'modal', 'id' => 'myModal'));
+    echo html_writer::start_tag('div', array('class' => 'modalSGEVEA', 'id' => 'myModal'));
     echo $modalContent;
     echo html_writer::end_tag('div');
 
