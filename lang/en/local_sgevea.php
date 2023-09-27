@@ -4,6 +4,11 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'SGEVEA';
 
+$string['dashboard'] = 'Dashboard';
+$string['dashboard_courses'] = 'Courses Dashboard';
+$string['dashboard_users'] = 'Users Dashboard';
+
+$string['settings'] = 'Settings';
 $string['generalsettings'] = 'General Settings';
 $string['surveysettings'] = 'APP Survey settings';
 $string['announcementsettings'] = 'APP Announce settings';
