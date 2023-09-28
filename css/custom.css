@@ -31,7 +31,7 @@
     body {
         font-size: 12pt;
     }
-    .btn-print, .navbar, .footer {
+    .btn-print, .navbar, .footer, .lineaunae, #topBar {
         display: none;
     }
 }
