@@ -10,11 +10,14 @@ if ($hassiteconfig && has_capability('local/sgevea:manage', context_system::inst
     $ADMIN->add('sgevea', new admin_category('sgevea_dashboard', get_string('dashboard', 'local_sgevea')));
 
     // Agregar hijos al menú "DASHBOARD"
-    $url_dashboard = new moodle_url('/local/sgevea/courses.php');
+    $url_dashboard = new moodle_url('/local/sgevea/views/dashboard-courses.php');
     $ADMIN->add('sgevea_dashboard', new admin_externalpage('sgevea_dashboard_courses', get_string('dashboard_courses', 'local_sgevea'), $url_dashboard));
 
-    $url_users = new moodle_url('/local/sgevea/users.php');
+    $url_users = new moodle_url('/local/sgevea/views/dashboard-users.php');
     $ADMIN->add('sgevea_dashboard', new admin_externalpage('sgevea_dashboard_users', get_string('dashboard_users', 'local_sgevea'), $url_users));
+
+    $url_users = new moodle_url('/local/sgevea/views/dashboard-teachers.php');
+    $ADMIN->add('sgevea_dashboard', new admin_externalpage('sgevea_dashboard_users', get_string('dashboard_teachers', 'local_sgevea'), $url_users));
 
     // Configuraciones específicas del plugin sgevea
     $settings = new admin_settingpage('sgevea_settings', get_string('settings', 'local_sgevea'));
