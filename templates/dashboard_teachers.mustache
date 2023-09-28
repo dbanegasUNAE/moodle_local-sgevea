@@ -1,0 +1,21 @@
+<table class="table table-bordered">
+    <tr><th>{{headTableName}}</th><th>{{headTableData}}</th></tr>
+    {{#teachers}}
+    <tr>
+        <td>
+            <div>{{fullname}}</div>
+            {{#id_number}}<span class="badge bg-light">{{id_number}}</span>{{/id_number}}
+        </td>
+        <td>
+            <ul class="list-group list-group-flush">
+            {{#courses}}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{courseDetail}}
+                    {{#courseSummary}}<span class="badge bg-light">{{courseSummary}}</span>{{/courseSummary}}
+                </li>
+            {{/courses}}
+            </ul>
+        </td>
+    </tr>
+    {{/teachers}}
+</table>

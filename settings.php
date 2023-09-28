@@ -17,7 +17,7 @@ if ($hassiteconfig && has_capability('local/sgevea:manage', context_system::inst
     $ADMIN->add('sgevea_dashboard', new admin_externalpage('sgevea_dashboard_users', get_string('dashboard_users', 'local_sgevea'), $url_users));
 
     $url_users = new moodle_url('/local/sgevea/views/dashboard-teachers.php');
-    $ADMIN->add('sgevea_dashboard', new admin_externalpage('sgevea_dashboard_users', get_string('dashboard_teachers', 'local_sgevea'), $url_users));
+    $ADMIN->add('sgevea_dashboard', new admin_externalpage('sgevea_dashboard_teachers', get_string('dashboard_teachers', 'local_sgevea'), $url_users));
 
     // Configuraciones específicas del plugin sgevea
     $settings = new admin_settingpage('sgevea_settings', get_string('settings', 'local_sgevea'));
@@ -38,4 +38,26 @@ if ($hassiteconfig && has_capability('local/sgevea:manage', context_system::inst
     // Encabezado para configuraciones de anuncios
     $settings->add(new admin_setting_heading('announcementsettings', get_string('announcementsettings', 'local_sgevea'), ''));
     $settings->add(new admin_setting_configcheckbox('local_sgevea/visualizaranuncio', get_string('visualizaranuncio', 'local_sgevea'), '', 1));
+
+    // Encabezado para configuraciones de Dashboard
+    $settings->add(new admin_setting_heading('dashboardsettings', get_string('dashboardsettings', 'local_sgevea'), ''));
+
+    // Encabezado para configuraciones de Dashboard - Profesores
+    $settings->add(new admin_setting_heading('dashboardteacherssettings', get_string('dashboardteacherssettings', 'local_sgevea'), ''));
+
+    // Configuración para mostrar el id_number de profesores
+    $settings->add(new admin_setting_configcheckbox(
+        'local_sgevea/dashboard_teachers_showidnumber',
+        get_string('dashboard_teachers_showidnumber', 'local_sgevea'),
+        get_string('dashboard_teachers_showidnumber_desc', 'local_sgevea'),
+        1
+    ));
+
+    // Configuración para mostrar el resumen en el dashboard de profesores
+    $settings->add(new admin_setting_configcheckbox(
+        'local_sgevea/dashboard_teachers_showsummary',
+        get_string('dashboard_teachers_showsummary', 'local_sgevea'),
+        get_string('dashboard_teachers_showsummary_desc', 'local_sgevea'),
+        0
+    ));
 }
