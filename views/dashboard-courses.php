@@ -24,7 +24,7 @@
 
 use core_analytics\course;
 
-require_once('../../config.php');
+require_once('../../../config.php');
 require_once($CFG->dirroot . '/course/lib.php');
 
 global $DB, $OUTPUT, $PAGE;

@@ -7,6 +7,7 @@ $string['pluginname'] = 'SGEVEA';
 $string['dashboard'] = 'Dashboard';
 $string['dashboard_courses'] = 'Courses Dashboard';
 $string['dashboard_users'] = 'Users Dashboard';
+$string['dashboard_teachers'] = 'Teachers Dashboard';
 
 $string['settings'] = 'Settings';
 $string['generalsettings'] = 'General Settings';

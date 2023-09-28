@@ -24,7 +24,7 @@
 
 use core_analytics\course;
 
-require_once('../../config.php');
+require_once('../../../config.php');
 
 global $DB, $OUTPUT, $PAGE;
 $COURSE;
@@ -50,8 +50,8 @@ $PAGE->set_title("Usuarios");
 
 $renderer = $PAGE->get_renderer('local_sgevea');
 // Obtener los datos
-require_once('classes/dashboard_usuarios.php');
-//require_once($CFG->dirroot . '/local/sgevea/classes/dashboard_usuarios.php');
+//require_once('../classes/dashboard_usuarios.php');
+require_once($CFG->dirroot . '/local/sgevea/classes/dashboard_usuarios.php');
 
 $data = dashboard_data::get_last_month_login_data($DB);
 //print_r o var_dump para inspeccionar 
