@@ -1,0 +1,6 @@
+.external-link-icon::after {
+    content: '\279C'; /* Este es el código Unicode para una flecha ligera hacia la derecha. */
+    font-weight: bold; /* Esto hace que la flecha sea un poco más pesada/visible. */
+    margin-left: 0px; /* Espacio entre el nombre del curso y el ícono. */
+    color: #007BFF; /* Color azul típico de los links. Ajusta según tus necesidades. */
+}

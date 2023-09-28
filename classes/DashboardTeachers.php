@@ -34,9 +34,11 @@ class DashboardTeachers extends Dashboard
                 }
 
                 $courseSummary = $this->configurations->showSummary ? strip_tags(format_text($course->summary)) : null;
+                $courseUrl = course_get_url($course->id)->out();
                 $processed_teachers[$teacher->id]['courses'][] = [
                     'courseDetail' => $course->fullname,
-                    'courseSummary' => $courseSummary
+                    'courseSummary' => $courseSummary,
+                    'courseUrl' => $courseUrl
                 ];
             }
         }
@@ -53,18 +55,20 @@ class DashboardTeachers extends Dashboard
      */
     public function render()
     {
+        global $OUTPUT;
         $teacherData = $this->getTeacherData();
 
         $teacherList = array_values($teacherData);
 
 
         $data = [
-            'header' => get_string('pluginname','local_sgevea').' - '.get_string('dashboard_teachers','local_sgevea'),
-            'headTableName' => get_string('dashboard_teachers_tablename','local_sgevea'),
-            'headTableData' => get_string('dashboard_teachers_tabledata','local_sgevea'),
+            'header' => get_string('pluginname', 'local_sgevea') . ' - ' . get_string('dashboard_teachers', 'local_sgevea'),
+            'headTableName' => get_string('dashboard_teachers_tablename', 'local_sgevea'),
+            'headTableData' => get_string('dashboard_teachers_tabledata', 'local_sgevea'),
             'teachers' => $teacherList,
             'showIDNumber' => $this->configurations->showIDNumber,
-            'showSummary' => $this->configurations->showSummary
+            'showSummary' => $this->configurations->showSummary,
+            'extIcon' => '<span class="external-link-icon"></span>'
         ];
         return $this->renderTemplate('local_sgevea/dashboard_teachers', $data);
     }
