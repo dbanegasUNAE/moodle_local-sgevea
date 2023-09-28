@@ -13,6 +13,7 @@ $PAGE->set_url('/local/sgevea/views/dashboard-teachers.php');
 $PAGE->set_pagelayout('standard');
 $PAGE->set_title(get_string('pluginname','local_sgevea').' - '.get_string('dashboard_teachers','local_sgevea'));
 $PAGE->requires->css(new moodle_url('/local/sgevea/css/custom.css'));
+$PAGE->requires->js(new moodle_url('/local/sgevea/js/custom.js'));
 
 echo $OUTPUT->header();
 

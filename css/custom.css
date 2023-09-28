@@ -31,7 +31,14 @@
     body {
         font-size: 12pt;
     }
-    .btn-print, .navbar, .footer, .lineaunae, #topBar {
-        display: none;
+    .btn-group-toolbar, .navbar, .footer, .lineaunae, #topBar, #nav-drawer, #s-page-footer, .rui-breadcrumbs {
+        display: none !important;
+    }
+    .wrapper-course{
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    .list-group-item{
+        padding: 0px !important;
     }
 }
