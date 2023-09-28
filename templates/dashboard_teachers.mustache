@@ -1,3 +1,4 @@
+<h1 class="mb-3">{{header}}</h1>
 <table class="table table-bordered">
     <tr><th>{{headTableName}}</th><th>{{headTableData}}</th></tr>
     {{#teachers}}
@@ -9,9 +10,12 @@
         <td>
             <ul class="list-group list-group-flush">
             {{#courses}}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{courseDetail}}
-                    {{#courseSummary}}<span class="badge bg-light">{{courseSummary}}</span>{{/courseSummary}}
+                <li class="list-group-item d-flex justify-content-between">
+                    <div>
+                    <a href="{{courseUrl}}" class="btn btn-sm btn-light" target="_blank">{{{extIcon}}}</a>
+                    <a href="{{courseUrl}}">{{courseDetail}}</a>
+                    </div>
+                    {{#courseSummary}}<span class="badge bg-light float-end">{{courseSummary}}</span>{{/courseSummary}}
                 </li>
             {{/courses}}
             </ul>
