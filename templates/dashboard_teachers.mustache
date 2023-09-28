@@ -1,4 +1,12 @@
 <h1 class="mb-3">{{header}}</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <span>Documento generado el: {{dateGen}}</span> 
+        <button onclick="window.print();" class="btn btn-sm btn-light btn-print">Imprimir</button>
+    </div>
+</div>
+
 <table class="table table-bordered">
     <tr><th>{{headTableName}}</th><th>{{headTableData}}</th></tr>
     {{#teachers}}

@@ -4,3 +4,34 @@
     margin-left: 0px; /* Espacio entre el nombre del curso y el ícono. */
     color: #007BFF; /* Color azul típico de los links. Ajusta según tus necesidades. */
 }
+/* Estilos para la pantalla */
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table td, .table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/* Estilos específicos para impresión */
+@media print {
+    .table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .table td, .table th {
+        border: 1px solid #000; /* Haciendo las líneas más oscuras para impresión */
+        padding: 8px;
+    }
+
+    /* Puedes agregar estilos adicionales o cambiar los existentes para la versión impresa */
+    body {
+        font-size: 12pt;
+    }
+    .btn-print, .navbar, .footer {
+        display: none;
+    }
+}
