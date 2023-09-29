@@ -206,9 +206,9 @@ class DashboardCourses extends Dashboard
         $coursesDetails = $this->getCoursesDetails();
         $dateGen = date('d/m/Y H:i:s');  // Formato: "dd/mm/YYYY H:i:s"
         $data = [
-            'header' => get_string('pluginname', 'local_sgevea') . ' - ' . get_string('dashboard_courses', 'local_sgevea'),
             'courses' => $coursesDetails,
-            'dateGen' => $dateGen
+            'dateGen' => $dateGen,
+            'titGen' => get_string('generated', 'local_sgevea')
         ];
 
         return $this->renderTemplate('local_sgevea/dashboard_courses', $data);

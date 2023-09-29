@@ -1,36 +1,35 @@
-<h1 class="mb-3">{{header}}</h1>
-
 <div class="card mb-3">
     <div class="card-body">
-        <span>Documento generado el: {{dateGen}}</span> 
+        <small class="text-muted">{{titGen}} {{dateGen}}</small> 
         <div class="btn-group float-end float-right btn-group-toolbar">
             <button class="btnAccPrint btn btn-sm btn-primary btn-print">Imprimir</button>
             <button class="btnAccReload btn btn-sm btn-info" class="">Recargar</button>
         </div>
     </div>
 </div>
-
-<table class="table table-bordered">
-    <tr><th>{{headTableName}}</th><th>{{headTableData}}</th></tr>
-    {{#teachers}}
-    <tr>
-        <td>
-            <div>{{fullname}}</div>
-            {{#id_number}}<span class="badge bg-light">{{id_number}}</span>{{/id_number}}
-        </td>
-        <td>
-            <ul class="list-group list-group-flush">
-            {{#courses}}
-                <li class="list-group-item d-flex justify-content-between">
-                    <div>
-                    <a href="{{courseUrl}}" class="btn btn-sm btn-light" target="_blank">{{{extIcon}}}</a>
-                    <a href="{{courseUrl}}">{{courseDetail}}</a>
-                    </div>
-                    {{#courseSummary}}<span class="badge bg-light float-end">{{courseSummary}}</span>{{/courseSummary}}
-                </li>
-            {{/courses}}
-            </ul>
-        </td>
-    </tr>
-    {{/teachers}}
-</table>
+<div>
+    <table class="table table-bordered table-sm">
+        <tr><th>{{headTableName}}</th><th>{{headTableData}}</th></tr>
+        {{#teachers}}
+        <tr>
+            <td>
+                <div>{{fullname}}</div>
+                {{#id_number}}<span class="badge bg-light">{{id_number}}</span>{{/id_number}}
+            </td>
+            <td>
+                <ul class="list-group list-group-flush">
+                {{#courses}}
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div>
+                        <a href="{{courseUrl}}" class="btn btn-sm btn-light" target="_blank">{{{extIcon}}}</a>
+                        <a href="{{courseUrl}}">{{courseDetail}}</a>
+                        </div>
+                        {{#courseSummary}}<span class="badge bg-light float-end">{{courseSummary}}</span>{{/courseSummary}}
+                    </li>
+                {{/courses}}
+                </ul>
+            </td>
+        </tr>
+        {{/teachers}}
+    </table>
+</div>

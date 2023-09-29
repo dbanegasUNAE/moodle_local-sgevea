@@ -40,3 +40,6 @@ $string['visualizarlistados'] = 'Views List';
 $string['visualizarformulario'] = 'View Form';
 
 $string['visualizaranuncio'] = 'View Modal';
+
+#General Texts
+$string['generated'] = 'Generated on';

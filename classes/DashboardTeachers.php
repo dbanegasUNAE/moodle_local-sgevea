@@ -62,14 +62,14 @@ class DashboardTeachers extends Dashboard
         $dateGen = date('d/m/Y H:i:s');  // Esto te dará la fecha y hora en el formato: "dd/mm
 
         $data = [
-            'header' => get_string('pluginname', 'local_sgevea') . ' - ' . get_string('dashboard_teachers', 'local_sgevea'),
             'headTableName' => get_string('dashboard_teachers_tablename', 'local_sgevea'),
             'headTableData' => get_string('dashboard_teachers_tabledata', 'local_sgevea'),
             'teachers' => $teacherList,
             'showIDNumber' => $this->configurations->showIDNumber,
             'showSummary' => $this->configurations->showSummary,
             'extIcon' => '<span class="external-link-icon"></span>',
-            'dateGen' => $dateGen
+            'dateGen' => $dateGen,
+            'titGen' => get_string('generated', 'local_sgevea')
         ];
         return $this->renderTemplate('local_sgevea/dashboard_teachers', $data);
     }
