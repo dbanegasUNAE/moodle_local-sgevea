@@ -43,7 +43,11 @@
                 <td>{{courseId}}</td>
                 <td><a href="{{courseLink}}">{{courseName}}</a></td>
                 <td><a href="{{categoryLink}}">{{categoryName}}</a></td>
-                <td>{{teacher}}</td>
+                <td>
+                {{#teacher}}
+                    <span class="badge badge-info">{{.}}</span>
+                {{/teacher}}
+                </td>
                 <td>{{status}}</td>
                 <td>{{{initializationStatus}}}</td>
                 <td>{{numStudents}}</td>

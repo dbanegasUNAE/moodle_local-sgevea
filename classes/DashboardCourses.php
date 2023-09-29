@@ -36,7 +36,7 @@ class DashboardCourses extends Dashboard
                 'courseId' => $course->id,
                 'courseName' => $course->fullname,
                 'categoryName' => $categoryName,
-                'teacher' => implode(', ', $teacherNames),
+                'teacher' => $teacherNames,
                 'status' => $course->visible ? 'Visible' : 'Oculto',
                 'initializationStatus' => $initializationStatus,
                 'numStudents' => $numStudents,
@@ -145,21 +145,21 @@ class DashboardCourses extends Dashboard
 
         // Sin fechas definidas
         if (!$course->startdate || !$course->enddate) {
-            return "<span class='btn btn-warning btn-sm'>Sin fechas definidas</span>";
+            return "<span class='badge badge-warning'>Sin fechas definidas</span>";
         }
 
         // Finalizado
         if ($currentTime > $course->enddate) {
-            return "<span class='btn btn-primary btn-sm'>Finalizado</span>";
+            return "<span class='badge badge-primary'>Finalizado</span>";
         }
 
         // No ha empezado
         if ($currentTime < $course->startdate) {
-            return "<span class='btn btn-info btn-sm'>No ha empezado</span>";
+            return "<span class='badge badge-info'>No ha empezado</span>";
         }
 
         // En progreso
-        return "<span class='btn btn-success btn-sm'>En progreso</span>";
+        return "<span class='badge badge-success'>En progreso</span>";
     }
 
     private function getAssignmentsStatus($course)
