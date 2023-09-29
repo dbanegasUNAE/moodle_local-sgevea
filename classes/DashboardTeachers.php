@@ -55,7 +55,6 @@ class DashboardTeachers extends Dashboard
      */
     public function render()
     {
-        global $OUTPUT;
         $teacherData = $this->getTeacherData();
 
         $teacherList = array_values($teacherData);

@@ -1,0 +1,64 @@
+<h1 class="mb-3">{{header}}</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <span>Documento generado el: {{dateGen}}</span> 
+        <div class="btn-group float-end float-right btn-group-toolbar">
+            <button class="btnAccPrint btn btn-sm btn-primary btn-print">Imprimir</button>
+            <button class="btnAccReload btn btn-sm btn-info" class="">Recargar</button>
+        </div>
+    </div>
+</div>
+
+<div>
+    <table class="table table-bordered table-sm table-striped">
+        <thead>
+            <tr>
+            <th rowspan="2">ID</th>
+                <th rowspan="2">Nombre del Curso</th>
+                <th rowspan="2">Categoría</th>
+                <th rowspan="2">Profesor</th>
+                <th rowspan="2">Estado</th>
+                <th rowspan="2">Inicio</th>
+                <th rowspan="2">Estudiantes</th>
+                <th colspan="6">Actividades</th>
+                <th colspan="4">Recursos</th>
+            </tr>
+            <tr>
+                <th>N. Actividades</th>
+                <th>Tareas</th>
+                <th>T. entregadas</th>
+                <th>T. no entregadas</th>
+                <th>Cuestionarios</th>
+                <th>Foros</th>
+                <th>N. Recursos</th>
+                <th>Archivos</th>
+                <th>Enlaces</th>
+                <th>Paginas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#courses}}
+            <tr>
+                <td>{{courseId}}</td>
+                <td><a href="{{courseLink}}">{{courseName}}</a></td>
+                <td><a href="{{categoryLink}}">{{categoryName}}</a></td>
+                <td>{{teacher}}</td>
+                <td>{{status}}</td>
+                <td>{{{initializationStatus}}}</td>
+                <td>{{numStudents}}</td>
+                <td>{{countActivities}}</td>
+                <td>{{assignments}}</td>
+                <td>{{submittedAssignments}}</td>
+                <td>{{notSubmittedAssignments}}</td>
+                <td>{{quizzes}}</td>
+                <td>{{forums}}</td>
+                <td>{{countResources}}</td>
+                <td>{{resources}}</td>
+                <td>{{urls}}</td>
+                <td>{{pages}}</td>
+            </tr>
+            {{/courses}}
+        </tbody>
+    </table>
+</div>
