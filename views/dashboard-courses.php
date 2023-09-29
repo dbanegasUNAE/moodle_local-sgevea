@@ -14,6 +14,11 @@ $PAGE->set_pagelayout('standard');
 $pageTitle = get_string('pluginname', 'local_sgevea') . ' - ' . get_string('dashboard_courses', 'local_sgevea');
 $PAGE->set_title($pageTitle);
 $PAGE->set_heading($pageTitle);
+
+$PAGE->navbar->add(get_string('pluginname', 'local_sgevea'), new moodle_url('/admin/category.php', array('category' => 'sgevea')));
+$PAGE->navbar->add(get_string('dashboard', 'local_sgevea'), new moodle_url('/admin/category.php', array('category' => 'sgevea_dashboard')));
+$PAGE->navbar->add($pageTitle);
+
 $PAGE->requires->css(new moodle_url('/local/sgevea/css/custom.css'));
 $PAGE->requires->js(new moodle_url('/local/sgevea/js/custom.js'));
 
