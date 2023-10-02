@@ -11,8 +11,17 @@
 }
 
 .table td, .table th {
-    border: 1px solid #ddd;
+    border: 1px solid #eee;
     padding: 8px;
+}
+
+.table-primary{
+    background-color: #024892;
+    color: #fff;
+}
+.table-info{
+    background-color: #00c3ff;
+    color: #fff;
 }
 
 /* Estilos específicos para impresión */
@@ -31,9 +40,6 @@
     body {
         font-size: 12pt;
     }
-    .btn-group-toolbar, .navbar, .footer, .lineaunae, #topBar, #nav-drawer, #s-page-footer, .rui-breadcrumbs {
-        display: none !important;
-    }
     .wrapper-course{
         padding: 0px !important;
         margin: 0px !important;
@@ -41,4 +47,12 @@
     .list-group-item{
         padding: 0px !important;
     }
+    .badge{ padding: 0px;}
+    .badge-info{ padding: 0px;}
+
+    .btn-group-toolbar, .navbar, .footer, .lineaunae, #topBar, #nav-drawer, #s-page-footer, .rui-breadcrumbs, .editmode-switch-form,
+    .dataTables_length, .dataTables_filter, .dataTables_info {
+        display: none !important;
+    }
+
 }
