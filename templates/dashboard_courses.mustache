@@ -1,46 +1,55 @@
 <div class="card mb-3">
     <div class="card-body">
-        <small class="text-muted">{{titGen}} {{dateGen}}</small> 
         <div class="btn-group float-end float-right btn-group-toolbar">
             <button class="btnAccPrint btn btn-sm btn-primary btn-print">Imprimir</button>
             <button class="btnAccReload btn btn-sm btn-info" class="">Recargar</button>
         </div>
+        <form class="form-inline">
+            <label class="my-1 mr-2" for="category_filter">Categoría</label>
+            <select name="category_filter" id="category_filter" class="custom-select my-1 mr-sm-2">
+                <option value="0">Todas las categorías</option>
+                {{{categories}}}
+            </select>
+            <button type="submit" class="btn btn-primary my-1">Filtrar</button>                
+        </form>        
     </div>
 </div>
 
 <div>
-    <table class="table table-bordered table-sm table-striped">
+    <table class="table table-bordered table-sm display" id="myTable">
         <thead>
             <tr>
-            <th rowspan="2">ID</th>
-                <th rowspan="2">Nombre del Curso</th>
-                <th rowspan="2">Categoría</th>
-                <th rowspan="2">Profesor</th>
-                <th rowspan="2">Estado</th>
-                <th rowspan="2">Inicio</th>
-                <th rowspan="2">Estudiantes</th>
-                <th colspan="6">Actividades</th>
-                <th colspan="4">Recursos</th>
+                <th rowspan="2" class="table-light">ID</th>
+                <th rowspan="2" class="table-light">Curso</th>
+                <th rowspan="2" class="table-light">Categoría</th>
+                <th rowspan="2" class="table-light">Profesor</th>
+                <th rowspan="2" class="table-light">Estado</th>
+                <th rowspan="2" class="table-light">Inicio</th>
+                <th rowspan="2" class="table-light">Estudiantes</th>
+                <th colspan="7" class="table-light">Actividades</th>
+                <th colspan="4" class="table-light">Recursos</th>
             </tr>
             <tr>
-                <th>N. Actividades</th>
+                
                 <th>Tareas</th>
-                <th>T. entregadas</th>
-                <th>T. no entregadas</th>
+                <th>T.Entregadas</th>
+                <th>T.No entregadas</th>
+                <th>T.Calificadas</th>
                 <th>Cuestionarios</th>
                 <th>Foros</th>
-                <th>N. Recursos</th>
+                <th class="table-light">Total</th>
                 <th>Archivos</th>
                 <th>Enlaces</th>
                 <th>Paginas</th>
+                <th class="table-light">Total</th>
             </tr>
         </thead>
         <tbody>
             {{#courses}}
             <tr>
                 <td>{{courseId}}</td>
-                <td><a href="{{courseLink}}">{{courseName}}</a></td>
-                <td><a href="{{categoryLink}}">{{categoryName}}</a></td>
+                <td><a href="{{courseURL}}">{{courseName}}</a></td>
+                <td><a href="{{categoryURL}}">{{categoryName}}</a></td>
                 <td>
                 {{#teacher}}
                     <span class="badge badge-info">{{.}}</span>
@@ -49,18 +58,25 @@
                 <td>{{status}}</td>
                 <td>{{{initializationStatus}}}</td>
                 <td>{{numStudents}}</td>
-                <td>{{countActivities}}</td>
                 <td>{{assignments}}</td>
                 <td>{{submittedAssignments}}</td>
                 <td>{{notSubmittedAssignments}}</td>
+                <td></td>
                 <td>{{quizzes}}</td>
                 <td>{{forums}}</td>
-                <td>{{countResources}}</td>
+                <td>{{countActivities}}</td>
                 <td>{{resources}}</td>
                 <td>{{urls}}</td>
                 <td>{{pages}}</td>
+                <td>{{countResources}}</td>
             </tr>
             {{/courses}}
         </tbody>
     </table>
 </div>
+<script>
+    let table = $('#myTable').DataTable({
+        responsive: true
+    });
+</script>
+<div class="mt-1"><small class="text-muted">{{titGen}} {{dateGen}}</small></div>

@@ -6,12 +6,25 @@ use \context_course;
 
 class DashboardCourses extends Dashboard
 {
+    protected $categoryId;
+
+    public function __construct($categoryId = 0) {
+        $this->categoryId = $categoryId;
+    }
 
     function getCoursesDetails()
     {
         global $DB;
 
-        $courses = get_courses();
+        if ($this->categoryId) {
+            // Si se ha proporcionado un ID de categoría, sólo obtenemos los cursos de esa categoría.
+            $courses = get_courses($this->categoryId);
+        } else {
+            // Si no se proporciona un ID de categoría, obtenemos todos los cursos.
+            $courses = get_courses();
+        }
+
+        //$courses = get_courses();
         $coursesDetails = [];
 
         foreach ($courses as $course) {
@@ -44,7 +57,20 @@ class DashboardCourses extends Dashboard
         }
         return $coursesDetails;
     }
+    public function getHierarchicalCategories($parentid = 0)
+    {
+        global $DB;
 
+        $categories = $DB->get_records('course_categories', ['parent' => $parentid], 'sortorder ASC');
+        $hierarchicalCategories = [];
+
+        foreach ($categories as $category) {
+            $category->subcategories = $this->getHierarchicalCategories($category->id);
+            $hierarchicalCategories[] = $category;
+        }
+
+        return $hierarchicalCategories;
+    }
     private function getTeacherNames($course)
     {
         $context = context_course::instance($course->id);
@@ -196,6 +222,18 @@ class DashboardCourses extends Dashboard
         ];
     }
 
+    public function generateCategoryDropdown($categories, $indent = '')
+    {
+        $dropdown = '';
+        foreach ($categories as $category) {
+            $dropdown .= '<option value="' . $category->id . '">' . $indent . $category->name . '</option>';
+            if (!empty($category->subcategories)) {
+                $dropdown .= $this->generateCategoryDropdown($category->subcategories, $indent . '--');
+            }
+        }
+        return $dropdown;
+    }
+
     /**
      * Renderiza la vista utilizando el template Mustache
      * 
@@ -204,9 +242,11 @@ class DashboardCourses extends Dashboard
     public function render()
     {
         $coursesDetails = $this->getCoursesDetails();
+        $categories = $this->getHierarchicalCategories();
         $dateGen = date('d/m/Y H:i:s');  // Formato: "dd/mm/YYYY H:i:s"
         $data = [
             'courses' => $coursesDetails,
+            'categories' => $this->generateCategoryDropdown($categories),
             'dateGen' => $dateGen,
             'titGen' => get_string('generated', 'local_sgevea')
         ];
