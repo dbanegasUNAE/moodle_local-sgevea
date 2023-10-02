@@ -19,4 +19,5 @@ Go to "my/" folder in moodle instance installation
 sudo nano index.php
 
 /* Set the next line before echo $OUTPUT->footer(); */
+
 include("{$CFG->dirroot}/local/sgevea/views/my.php");
