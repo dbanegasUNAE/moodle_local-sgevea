@@ -1,6 +1,5 @@
 <div class="card mb-3">
     <div class="card-body">
-        <small class="text-muted">{{titGen}} {{dateGen}}</small> 
         <div class="btn-group float-end float-right btn-group-toolbar">
             <button class="btnAccPrint btn btn-sm btn-primary btn-print">Imprimir</button>
             <button class="btnAccReload btn btn-sm btn-info" class="">Recargar</button>
@@ -10,8 +9,6 @@
 <div class="container">
     <canvas id="myChart" width="600" height="300"></canvas>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script type="application/json" id="chartData">
 {
@@ -55,4 +52,4 @@ new Chart(ctx, {
     }
   });
 </script>
-<div><small class="text-muted">end</small></div>
+<div><small class="text-muted">{{titGen}} {{dateGen}}</small> </div>

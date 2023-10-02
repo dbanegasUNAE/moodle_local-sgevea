@@ -21,6 +21,8 @@ $PAGE->navbar->add($pageTitle);
 
 $PAGE->requires->css(new moodle_url('/local/sgevea/css/custom.css'));
 $PAGE->requires->js(new moodle_url('/local/sgevea/js/custom.js'));
+$PAGE->requires->js(new moodle_url('/local/sgevea/libraries/chart.js/cdn.jsdelivr.net_npm_chart.js'), true);
+
 
 echo $OUTPUT->header();
 
