@@ -29,7 +29,8 @@ class DashboardTeachers extends Dashboard
                     $processed_teachers[$teacher->id] = [
                         'fullname' => fullname($teacher),
                         'id_number' => $this->configurations->showIDNumber ? $teacher->idnumber : null,
-                        'courses' => []
+                        'courses' => [],
+                        'countCourses' => 0
                     ];
                 }
 
@@ -40,6 +41,9 @@ class DashboardTeachers extends Dashboard
                     'courseSummary' => $courseSummary,
                     'courseUrl' => $courseUrl
                 ];
+
+                // Incrementa el contador de cursos para este profesor
+                $processed_teachers[$teacher->id]['countCourses']++;
             }
         }
 
@@ -64,6 +68,8 @@ class DashboardTeachers extends Dashboard
         $data = [
             'headTableName' => get_string('dashboard_teachers_tablename', 'local_sgevea'),
             'headTableData' => get_string('dashboard_teachers_tabledata', 'local_sgevea'),
+            'headTableIdNumber' => get_string('dashboard_teachers_tableid', 'local_sgevea'),
+            'headTableCountCourse' => get_string('dashboard_teachers_tablecount', 'local_sgevea'),
             'teachers' => $teacherList,
             'showIDNumber' => $this->configurations->showIDNumber,
             'showSummary' => $this->configurations->showSummary,

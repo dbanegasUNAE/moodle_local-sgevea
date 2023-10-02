@@ -19,8 +19,11 @@ $PAGE->navbar->add(get_string('pluginname', 'local_sgevea'), new moodle_url('/ad
 $PAGE->navbar->add(get_string('dashboard', 'local_sgevea'), new moodle_url('/admin/category.php', array('category' => 'sgevea_dashboard')));
 $PAGE->navbar->add($pageTitle);
 
+$PAGE->requires->jquery();//Used for datatable.js
 $PAGE->requires->css(new moodle_url('/local/sgevea/css/custom.css'));
+$PAGE->requires->css(new moodle_url('/local/sgevea/libraries/datatables.js/cdn.datatables.net_v_bs4_dt-1.13.6_datatables.min.css'));
 $PAGE->requires->js(new moodle_url('/local/sgevea/js/custom.js'));
+$PAGE->requires->js(new moodle_url('/local/sgevea/libraries/datatables.js/cdn.datatables.net_v_bs4_dt-1.13.6_datatables.min.js'), true);
 
 echo $OUTPUT->header();
 

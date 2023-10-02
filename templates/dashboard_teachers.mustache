@@ -1,35 +1,53 @@
-<div class="card mb-3">
-    <div class="card-body">
-        <small class="text-muted">{{titGen}} {{dateGen}}</small> 
-        <div class="btn-group float-end float-right btn-group-toolbar">
+<div class="btn-group float-end float-right btn-group-toolbar">
             <button class="btnAccPrint btn btn-sm btn-primary btn-print">Imprimir</button>
             <button class="btnAccReload btn btn-sm btn-info" class="">Recargar</button>
         </div>
-    </div>
-</div>
 <div>
-    <table class="table table-bordered table-sm">
-        <tr><th>{{headTableName}}</th><th>{{headTableData}}</th></tr>
+    <table class="table table-bordered table-sm display" id="myTable">
+        <colgroup>
+            {{#showIDNumber}}<col width="10%">{{/showIDNumber}}
+            <col>
+            <col>
+            <col width="10%">
+        </colgroup>
+        <thead>
+            <tr>
+                {{#showIDNumber}}<th>{{headTableIdNumber}}</th>{{/showIDNumber}}
+                <th>{{headTableName}}</th>
+                <th>{{headTableData}}</th>
+                {{#showSummary}}<th>{{headTableCountCourse}}</th>{{/showSummary}}
+            </tr>
+        </thead>
+        <tbody>
         {{#teachers}}
-        <tr>
-            <td>
-                <div>{{fullname}}</div>
-                {{#id_number}}<span class="badge bg-light">{{id_number}}</span>{{/id_number}}
-            </td>
-            <td>
-                <ul class="list-group list-group-flush">
-                {{#courses}}
-                    <li class="list-group-item d-flex justify-content-between">
-                        <div>
-                        <a href="{{courseUrl}}" class="btn btn-sm btn-light" target="_blank">{{{extIcon}}}</a>
-                        <a href="{{courseUrl}}">{{courseDetail}}</a>
-                        </div>
-                        {{#courseSummary}}<span class="badge bg-light float-end">{{courseSummary}}</span>{{/courseSummary}}
-                    </li>
-                {{/courses}}
-                </ul>
-            </td>
-        </tr>
+            <tr>
+                {{#showIDNumber}}<td>{{id_number}}</td>{{/showIDNumber}}
+                <td>
+                    {{fullname}}
+                </td>
+                <td>
+                    <ul class="list-group list-group-flush">
+                    {{#courses}}
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div>
+                            <a href="{{courseUrl}}" class="btn btn-sm btn-light" target="_blank">{{{extIcon}}}</a>
+                            <a href="{{courseUrl}}">{{courseDetail}}</a>
+                            </div>
+                            {{#courseSummary}}<span class="badge bg-light float-end">{{courseSummary}}</span>{{/courseSummary}}
+                        </li>
+                    {{/courses}}
+                    </ul>
+                </td>
+                <td>{{countCourses}}</td>
+            </tr>
         {{/teachers}}
+        </tbody>
     </table>
 </div>
+
+<script>
+    let table = $('#myTable').DataTable({
+        responsive: true
+    });
+</script>
+<div class="mt-1"><small class="text-muted">{{titGen}} {{dateGen}}</small></div>
