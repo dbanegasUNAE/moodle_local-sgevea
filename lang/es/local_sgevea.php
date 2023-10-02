@@ -20,6 +20,8 @@ $string['dashboard_teachers_showsummary_desc'] = 'Si está activado, mostrará e
 
 $string['dashboard_teachers_tablename'] = 'Profesores';
 $string['dashboard_teachers_tabledata'] = 'Cursos';
+$string['dashboard_teachers_tableid'] = 'ID';
+$string['dashboard_teachers_tablecount'] = 'N. Cursos';
 
 $string['settings'] = 'Configuraciones';
 $string['generalsettings'] = 'Configuraciones Generales';
@@ -42,4 +44,4 @@ $string['visualizarformulario'] = 'Visualizar formulario';
 $string['visualizaranuncio'] = 'Visualizar modal';
 
 #General Texts
-$string['generated'] = 'Generated el';
+$string['generated'] = 'Generado el';

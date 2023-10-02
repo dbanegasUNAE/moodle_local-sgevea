@@ -20,6 +20,8 @@ $string['dashboard_teachers_showsummary_desc'] = 'If enabled, it will show the c
 
 $string['dashboard_teachers_tablename'] = 'Teacher';
 $string['dashboard_teachers_tabledata'] = 'Courses';
+$string['dashboard_teachers_tableid'] = 'ID';
+$string['dashboard_teachers_tablecount'] = 'Count Courses';
 
 $string['settings'] = 'Settings';
 $string['generalsettings'] = 'General Settings';
