@@ -35,7 +35,22 @@ class DashboardTeachers extends Dashboard
                 }
 
                 // Obtener el tipo de enrolamiento del profesor en este curso
-                $teacherEnrolType = $this->getTeacherEnrolType($teacher->id, $course->id);
+                //$teacherEnrolType = $this->getTeacherEnrolType($teacher->id, $course->id);
+
+
+                $sql = "SELECT e.enrol
+                FROM {enrol} e
+                JOIN {user_enrolments} ue ON ue.enrolid = e.id
+                WHERE e.courseid = :courseid AND ue.userid = :userid;
+                ";
+
+                $params = [
+                    'courseid' => $course->id,
+                    'userid' => $teacher->id,
+                ];
+
+                $enrolInstance = $DB->get_field_sql($sql, $params);
+
 
                 // Obtener información sobre la visibilidad del curso
                 $courseVisibility = $this->isCourseVisible($course->id);
@@ -46,7 +61,7 @@ class DashboardTeachers extends Dashboard
                     'courseDetail' => $course->fullname,
                     'courseSummary' => $courseSummary,
                     'courseUrl' => $courseUrl,
-                    'enrolType' => $teacherEnrolType,
+                    'enrolType' => $enrolInstance,
                     'isCourseVisible' => $courseVisibility
                 ];
 
