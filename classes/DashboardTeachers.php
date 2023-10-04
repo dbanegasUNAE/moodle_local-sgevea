@@ -34,7 +34,17 @@ class DashboardTeachers extends Dashboard
                     ];
                 }
 
-                $enrolInstance = $this->getEnrolInstance($course->id);
+                //$enrolInstance = $this->getEnrolInstance($course->id, $teacher->id);
+
+                // Consulta SQL simplificada para obtener el valor del tipo de enrolamiento
+                $sql = "SELECT enrol
+            FROM {enrol}
+            WHERE courseid = :courseid
+            AND enrol IN ('manual', 'sgaunaesync')";
+
+                $params = ['courseid' => $course->id];
+                $enrolInstance = $DB->get_field_sql($sql, $params);
+
 
                 $courseSummary = $this->configurations->showSummary ? strip_tags(format_text($course->summary)) : null;
                 $courseUrl = course_get_url($course->id)->out();
@@ -53,11 +63,32 @@ class DashboardTeachers extends Dashboard
         // Convertimos el array asociativo a una lista simple
         return array_values($processed_teachers);
     }
-    protected function getEnrolInstance(int $courseId): string
+    protected function getEnrolInstance(int $courseId, int $teacherId): string
     {
         global $DB;
-        $enrolInstance = $DB->get_field('enrol', 'enrol', ['courseid' => $courseId]);
-        $name = null;
+
+        $context = context_course::instance($courseId);
+        $teacherRoleId = $DB->get_field('role', 'id', ['shortname' => 'editingteacher']); // Reemplaza 'editingteacher' con el nombre del rol del profesor
+
+        if ($context && $teacherRoleId) {
+            $sql = "SELECT DISTINCT e.enrol FROM {enrol} e
+                    INNER JOIN {user_enrolments} ue ON e.id = ue.enrolid
+                    WHERE ue.userid = :userid
+                    AND ue.courseid = :courseid
+                    AND e.enrol != 'self'"; // Puedes ajustar la condición en la cláusula WHERE según tus necesidades
+
+            $params = [
+                'userid' => $teacherId,
+                'courseid' => $courseId,
+            ];
+
+            $enrolInstance = $DB->get_field_sql($sql, $params);
+
+            if ($enrolInstance) {
+                // $enrolInstance contendrá el tipo de enrolamiento del profesor en el curso
+            }
+        }
+
         switch ($enrolInstance) {
             case 'manual':
                 $name = "MM";
