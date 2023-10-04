@@ -24,6 +24,13 @@
     color: #fff;
 }
 
+/*
+Dashboard Teacher
+*/
+.dashTeacherSummay .bs{
+    display: none !important;
+}
+
 /* Estilos específicos para impresión */
 @media print {
     .table {

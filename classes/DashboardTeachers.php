@@ -38,7 +38,7 @@ class DashboardTeachers extends Dashboard
 
                 $courseVisibility = $this->isCourseVisible($course->id);
 
-                $courseSummary = $this->configurations->showSummary ? strip_tags(format_text($course->summary)) : null;
+                $courseSummary = $this->configurations->showSummary ? $course->summary : null;
                 $courseUrl = course_get_url($course->id)->out();
                 $processed_teachers[$teacher->id]['courses'][] = [
                     'courseDetail' => $course->fullname,
