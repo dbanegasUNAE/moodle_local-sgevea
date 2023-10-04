@@ -26,11 +26,14 @@ class DashboardTeachers extends Dashboard
 
             foreach ($teachers as $teacher) {
                 if (!isset($processed_teachers[$teacher->id])) {
+                    $userUrl = new \moodle_url('/user/view.php', ['id' => $teacher->id]);
+                    $userUrlString = $userUrl->out();
                     $processed_teachers[$teacher->id] = [
                         'fullname' => fullname($teacher),
                         'id_number' => $this->configurations->showIDNumber ? $teacher->idnumber : null,
                         'courses' => [],
-                        'countCourses' => 0
+                        'countCourses' => 0,
+                        'userUrl' => $userUrlString
                     ];
                 }
 
@@ -119,7 +122,7 @@ class DashboardTeachers extends Dashboard
             'teachers' => $teacherList,
             'showIDNumber' => $this->configurations->showIDNumber,
             'showSummary' => $this->configurations->showSummary,
-            'extIcon' => '<span class="external-link-icon"></span>',
+            'extIcon' => '<i class="fa-solid fa-square-arrow-up-right"></i>',
             'dateGen' => $dateGen,
             'titGen' => get_string('generated', 'local_sgevea')
         ];

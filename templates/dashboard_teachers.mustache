@@ -23,7 +23,8 @@
             <tr>
                 {{#showIDNumber}}<td>{{id_number}}</td>{{/showIDNumber}}
                 <td>
-                    {{fullname}}
+                    <a href="{{userUrl}}" target="_blank" class="badge badge-light">{{{extIcon}}}</a>
+                    <a href="{{userUrl}}">{{fullname}}</a>
                 </td>
                 <td>
                     <ul class="list-group list-group-flush">
