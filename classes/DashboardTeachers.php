@@ -34,17 +34,11 @@ class DashboardTeachers extends Dashboard
                     ];
                 }
 
-                //$enrolInstance = $this->getEnrolInstance($course->id, $teacher->id);
+                // Obtener el tipo de enrolamiento del profesor en este curso
+                $teacherEnrolType = $this->getTeacherEnrolType($teacher->id, $course->id);
 
-                // Consulta SQL simplificada para obtener el valor del tipo de enrolamiento
-                $sql = "SELECT enrol
-            FROM {enrol}
-            WHERE courseid = :courseid
-            AND enrol IN ('manual', 'sgaunaesync')";
-
-                $params = ['courseid' => $course->id];
-                $enrolInstance = $DB->get_field_sql($sql, $params);
-
+                // Obtener información sobre la visibilidad del curso
+                $courseVisibility = $this->isCourseVisible($course->id);
 
                 $courseSummary = $this->configurations->showSummary ? strip_tags(format_text($course->summary)) : null;
                 $courseUrl = course_get_url($course->id)->out();
@@ -52,7 +46,8 @@ class DashboardTeachers extends Dashboard
                     'courseDetail' => $course->fullname,
                     'courseSummary' => $courseSummary,
                     'courseUrl' => $courseUrl,
-                    'enrolType' => $enrolInstance
+                    'enrolType' => $teacherEnrolType,
+                    'isCourseVisible' => $courseVisibility
                 ];
 
                 // Incrementa el contador de cursos para este profesor
@@ -63,46 +58,26 @@ class DashboardTeachers extends Dashboard
         // Convertimos el array asociativo a una lista simple
         return array_values($processed_teachers);
     }
-    protected function getEnrolInstance(int $courseId, int $teacherId): string
+    private function isCourseVisible($courseId)
+    {
+        $course = get_course($courseId);
+        return $course->visible;
+    }
+    private function getTeacherEnrolType($teacherId, $courseId)
     {
         global $DB;
 
-        $context = context_course::instance($courseId);
-        $teacherRoleId = $DB->get_field('role', 'id', ['shortname' => 'editingteacher']); // Reemplaza 'editingteacher' con el nombre del rol del profesor
-
-        if ($context && $teacherRoleId) {
-            $sql = "SELECT DISTINCT e.enrol FROM {enrol} e
-                    INNER JOIN {user_enrolments} ue ON e.id = ue.enrolid
-                    WHERE ue.userid = :userid
-                    AND ue.courseid = :courseid
-                    AND e.enrol != 'self'"; // Puedes ajustar la condición en la cláusula WHERE según tus necesidades
-
-            $params = [
-                'userid' => $teacherId,
-                'courseid' => $courseId,
-            ];
-
-            $enrolInstance = $DB->get_field_sql($sql, $params);
-
-            if ($enrolInstance) {
-                // $enrolInstance contendrá el tipo de enrolamiento del profesor en el curso
-            }
+        // Reemplaza 'manual' con el nombre del tipo de enrolamiento deseado ('sgaunaesync' en tu caso)
+        if ($val = $DB->get_field('enrol', 'enrol', ['courseid' => $courseId, 'enrol' => 'sgaunaesync', 'status' => 0])) {
+            $name = "SGA";
+        } else if ($val = $DB->get_field('enrol', 'enrol', ['courseid' => $courseId, 'enrol' => 'manual', 'status' => 0])) {
+            $name = "MM";
+        } else {
+            $val = "otro";
+            $name = "?";
         }
-
-        switch ($enrolInstance) {
-            case 'manual':
-                $name = "MM";
-                break;
-            case 'sgaunaesync':
-                $name = "SGA";
-                break;
-            default:
-                $name = "?";
-        }
-        $ret = "<span class='badge badge-light' data-toggle='tooltip' data-placement='top' title='{$enrolInstance}'>{$name}</span>";
-        return $ret;
+        return "<span class='badge badge-light' data-toggle='tooltip' data-placement='top' title='{$val}'>{$name}</span>";
     }
-
 
     /**
      * Renderiza la vista utilizando el template Mustache

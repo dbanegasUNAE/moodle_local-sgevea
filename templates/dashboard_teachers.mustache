@@ -30,10 +30,17 @@
                     {{#courses}}
                         <li class="list-group-item d-flex justify-content-between">
                             <div>
+                            {{#isCourseVisible}}
+                                <span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="Visible"><i class="fas fa-eye"></i></span>
+                            {{/isCourseVisible}}
+                            {{^isCourseVisible}}
+                                <span class="badge badge-warning" data-toggle="tooltip" data-placement="top" title="No Visible"><i class="fas fa-eye-slash"></i></span>
+                            {{/isCourseVisible}}
+                            {{{enrolType}}}
                             <a href="{{courseUrl}}" class="btn btn-xs btn-light" target="_blank">{{{extIcon}}}</a>
-                            <a href="{{courseUrl}}">{{{enrolType}}} {{courseDetail}}</a>
+                            <a href="{{courseUrl}}">{{courseDetail}}</a>
                             </div>
-                            {{#courseSummary}}<span class="badge bg-light float-end">{{courseSummary}}</span>{{/courseSummary}}
+                            {{#courseSummary}}<span class="badge badge-light float-end">{{courseSummary}}</span>{{/courseSummary}}
                         </li>
                     {{/courses}}
                     </ul>
