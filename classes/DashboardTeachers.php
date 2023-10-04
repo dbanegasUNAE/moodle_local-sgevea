@@ -34,12 +34,15 @@ class DashboardTeachers extends Dashboard
                     ];
                 }
 
+                $enrolInstance = $this->getEnrolInstance($course->id);
+
                 $courseSummary = $this->configurations->showSummary ? strip_tags(format_text($course->summary)) : null;
                 $courseUrl = course_get_url($course->id)->out();
                 $processed_teachers[$teacher->id]['courses'][] = [
                     'courseDetail' => $course->fullname,
                     'courseSummary' => $courseSummary,
-                    'courseUrl' => $courseUrl
+                    'courseUrl' => $courseUrl,
+                    'enrolType' => $enrolInstance
                 ];
 
                 // Incrementa el contador de cursos para este profesor
@@ -49,6 +52,24 @@ class DashboardTeachers extends Dashboard
 
         // Convertimos el array asociativo a una lista simple
         return array_values($processed_teachers);
+    }
+    protected function getEnrolInstance(int $courseId): string
+    {
+        global $DB;
+        $enrolInstance = $DB->get_field('enrol', 'enrol', ['courseid' => $courseId]);
+        $name = null;
+        switch ($enrolInstance) {
+            case 'manual':
+                $name = "MM";
+                break;
+            case 'sgaunaesync':
+                $name = "SGA";
+                break;
+            default:
+                $name = "?";
+        }
+        $ret = "<span class='badge badge-light' data-toggle='tooltip' data-placement='top' title='{$enrolInstance}'>{$name}</span>";
+        return $ret;
     }
 
 
