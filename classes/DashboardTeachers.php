@@ -34,25 +34,8 @@ class DashboardTeachers extends Dashboard
                     ];
                 }
 
-                // Obtener el tipo de enrolamiento del profesor en este curso
-                //$teacherEnrolType = $this->getTeacherEnrolType($teacher->id, $course->id);
+                $teacherEnrolType = $this->getTeacherEnrolType($course->id, $teacher->id);
 
-
-                $sql = "SELECT e.enrol
-                FROM {enrol} e
-                JOIN {user_enrolments} ue ON ue.enrolid = e.id
-                WHERE e.courseid = :courseid AND ue.userid = :userid;
-                ";
-
-                $params = [
-                    'courseid' => $course->id,
-                    'userid' => $teacher->id,
-                ];
-
-                $enrolInstance = $DB->get_field_sql($sql, $params);
-
-
-                // Obtener información sobre la visibilidad del curso
                 $courseVisibility = $this->isCourseVisible($course->id);
 
                 $courseSummary = $this->configurations->showSummary ? strip_tags(format_text($course->summary)) : null;
@@ -61,7 +44,7 @@ class DashboardTeachers extends Dashboard
                     'courseDetail' => $course->fullname,
                     'courseSummary' => $courseSummary,
                     'courseUrl' => $courseUrl,
-                    'enrolType' => $enrolInstance,
+                    'enrolType' => $teacherEnrolType,
                     'isCourseVisible' => $courseVisibility
                 ];
 
@@ -73,25 +56,46 @@ class DashboardTeachers extends Dashboard
         // Convertimos el array asociativo a una lista simple
         return array_values($processed_teachers);
     }
+    /**
+     * Retorna el valor si un curso esta visible
+     * 
+     * @return int
+     */
     private function isCourseVisible($courseId)
     {
         $course = get_course($courseId);
         return $course->visible;
     }
-    private function getTeacherEnrolType($teacherId, $courseId)
+    /**
+     * Obtiene el tipo de Matriculacion de un usuario en un curso
+     * 
+     * @return string
+     */
+    private function getTeacherEnrolType($courseId, $teacherId): string
     {
         global $DB;
-
-        // Reemplaza 'manual' con el nombre del tipo de enrolamiento deseado ('sgaunaesync' en tu caso)
-        if ($val = $DB->get_field('enrol', 'enrol', ['courseid' => $courseId, 'enrol' => 'sgaunaesync', 'status' => 0])) {
-            $name = "SGA";
-        } else if ($val = $DB->get_field('enrol', 'enrol', ['courseid' => $courseId, 'enrol' => 'manual', 'status' => 0])) {
-            $name = "MM";
-        } else {
-            $val = "otro";
-            $name = "?";
+        $sql = "SELECT e.enrol
+                FROM {enrol} e
+                JOIN {user_enrolments} ue ON ue.enrolid = e.id
+                WHERE e.courseid = :courseid AND ue.userid = :userid;
+                ";
+        $params = [
+            'courseid' => $courseId,
+            'userid' => $teacherId,
+        ];
+        $enrol = $DB->get_field_sql($sql, $params);
+        switch ($enrol) {
+            case "sgaunaesync":
+                $name = "SGA";
+                break;
+            case "manual":
+                $name = "MM";
+                break;
+            default:
+                $name = "?";
+                break;
         }
-        return "<span class='badge badge-light' data-toggle='tooltip' data-placement='top' title='{$val}'>{$name}</span>";
+        return "<span class='badge badge-light' data-toggle='tooltip' data-placement='top' title='{$enrol}'>{$name}</span>";
     }
 
     /**
