@@ -98,7 +98,7 @@ class DashboardTeachers extends Dashboard
                 $name = "?";
                 break;
         }
-        return "<span class='badge badge-light' data-toggle='tooltip' data-placement='top' title='{$enrol}'>{$name}</span>";
+        return "<span class='badge badge-light badgeEnrolType' data-toggle='tooltip' data-placement='top' title='{$enrol}'>{$name}</span>";
     }
 
     /**

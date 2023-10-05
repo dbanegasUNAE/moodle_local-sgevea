@@ -1,65 +1,95 @@
 .external-link-icon::after {
-    content: '\279C'; /* Este es el código Unicode para una flecha ligera hacia la derecha. */
-    font-weight: bold; /* Esto hace que la flecha sea un poco más pesada/visible. */
-    margin-left: 0px; /* Espacio entre el nombre del curso y el ícono. */
-    color: #007BFF; /* Color azul típico de los links. Ajusta según tus necesidades. */
+  content: "\279C"; /* Este es el código Unicode para una flecha ligera hacia la derecha. */
+  font-weight: bold; /* Esto hace que la flecha sea un poco más pesada/visible. */
+  margin-left: 0px; /* Espacio entre el nombre del curso y el ícono. */
+  color: #007bff; /* Color azul típico de los links. Ajusta según tus necesidades. */
 }
 /* Estilos para la pantalla */
 .table {
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.table td, .table th {
-    border: 1px solid #eee;
-    padding: 8px;
+.table td,
+.table th {
+  border: 1px solid #eee;
+  padding: 8px;
 }
 
-.table-primary{
-    background-color: #024892;
-    color: #fff;
+.table-primary {
+  background-color: #024892;
+  color: #fff;
 }
-.table-info{
-    background-color: #00c3ff;
-    color: #fff;
+.table-info {
+  background-color: #00c3ff;
+  color: #fff;
+}
+
+.table-borderless {
+  border-collapse: collapse;
+  width: 100%;
+}
+.table-borderless td,
+.table-borderless th {
+  border: none !important;
+  padding: 4px !important;
 }
 
 /*
 Dashboard Teacher
 */
-.dashTeacherSummay .bs{
-    display: none !important;
+.dashTeacherSummay .bs {
+  display: none !important;
+}
+
+i {
+  margin-right: 4px;
 }
 
 /* Estilos específicos para impresión */
 @media print {
-    .table {
-        border-collapse: collapse;
-        width: 100%;
-    }
+  .tableMain {
+    border-collapse: collapse;
+    width: 100%;
+  }
 
-    .table td, .table th {
-        border: 1px solid #000; /* Haciendo las líneas más oscuras para impresión */
-        padding: 8px;
-    }
+  .tableMain td,
+  .tableMain th {
+    border: 1px solid #000; /* Haciendo las líneas más oscuras para impresión */
+    padding: 8px;
+  }
 
-    /* Puedes agregar estilos adicionales o cambiar los existentes para la versión impresa */
-    body {
-        font-size: 12pt;
-    }
-    .wrapper-course{
-        padding: 0px !important;
-        margin: 0px !important;
-    }
-    .list-group-item{
-        padding: 0px !important;
-    }
-    .badge{ padding: 0px;}
-    .badge-info{ padding: 0px;}
+  /* Puedes agregar estilos adicionales o cambiar los existentes para la versión impresa */
+  body {
+    font-size: 12pt;
+  }
+  .wrapper-course {
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+  .list-group-item {
+    padding: 0px !important;
+  }
+  .badge {
+    padding: 0px;
+  }
+  .badge-info {
+    padding: 0px;
+  }
 
-    .btn-group-toolbar, .navbar, .footer, .lineaunae, #topBar, #nav-drawer, #s-page-footer, .rui-breadcrumbs, .editmode-switch-form,
-    .dataTables_length, .dataTables_filter, .dataTables_info {
-        display: none !important;
-    }
-
+  .btn-group-toolbar,
+  .navbar,
+  .footer,
+  .lineaunae,
+  #topBar,
+  #nav-drawer,
+  #s-page-footer,
+  .rui-breadcrumbs,
+  .editmode-switch-form,
+  .dataTables_length,
+  .dataTables_filter,
+  .badgeEnrolType,
+  .btnLink {
+    display: none !important;
+  }
 }

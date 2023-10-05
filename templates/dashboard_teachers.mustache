@@ -1,7 +1,4 @@
-<div class="btn-group float-end float-right btn-group-toolbar">
-            <button class="btnAccPrint btn btn-sm btn-primary btn-print">Imprimir</button>
-            <button class="btnAccReload btn btn-sm btn-info" class="">Recargar</button>
-        </div>
+{{> local_sgevea/dashboard_toolbar}}
 <div>
     <table class="table table-bordered table-sm display" id="myTable">
         <colgroup>
@@ -15,7 +12,7 @@
                 {{#showIDNumber}}<th>{{headTableIdNumber}}</th>{{/showIDNumber}}
                 <th>{{headTableName}}</th>
                 <th>{{headTableData}}</th>
-                {{#showSummary}}<th>{{headTableCountCourse}}</th>{{/showSummary}}
+                <th>{{headTableCountCourse}}</th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +20,7 @@
             <tr>
                 {{#showIDNumber}}<td>{{id_number}}</td>{{/showIDNumber}}
                 <td>
-                    <a href="{{userUrl}}" target="_blank" class="badge badge-light">{{{extIcon}}}</a>
+                    <a href="{{userUrl}}" target="_blank" class="btn btn-xs btn-light btnLink">{{{extIcon}}}</a>
                     <a href="{{userUrl}}">{{fullname}}</a>
                 </td>
                 <td>
@@ -38,7 +35,7 @@
                                 <span class="badge badge-warning" data-toggle="tooltip" data-placement="top" title="No Visible"><i class="fas fa-eye-slash"></i></span>
                             {{/isCourseVisible}}
                             {{{enrolType}}}
-                            <a href="{{courseUrl}}" class="btn btn-xs btn-light" target="_blank">{{{extIcon}}}</a>
+                            <a href="{{courseUrl}}" class="btn btn-xs btn-light btnLink" target="_blank">{{{extIcon}}}</a>
                             <a href="{{courseUrl}}">{{courseDetail}}</a>
                             </div>
                             {{#courseSummary}}<span class="badge badge-light float-end dashTeacherSummay">{{{courseSummary}}}</span>{{/courseSummary}}
@@ -52,10 +49,4 @@
         </tbody>
     </table>
 </div>
-
-<script>
-    let table = $('#myTable').DataTable({
-        responsive: true
-    });
-</script>
 <div class="mt-1"><small class="text-muted">{{titGen}} {{dateGen}}</small></div>
