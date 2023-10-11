@@ -2,7 +2,7 @@
 
 namespace local_sgevea;
 
-class endpoint
+class Endpoint
 {
 
     private $api;

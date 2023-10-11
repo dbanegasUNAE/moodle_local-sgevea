@@ -1,25 +1,4 @@
 <?php
-
-function local_sgevea_get_survey_data()
-{
-    global $CFG;
-
-    require_login();
-
-    $token = get_config('local_sgevea', 'token'); 
-    $status = get_config('local_sgevea', 'status');
-    $apiurl = get_config('local_sgevea', 'apiurl');
-
-    if (!$status) {
-        return false;
-    }
-
-    $url = $apiurl . "?auth=$token&acc=getAllSurvey&idUser=0123456789&roles=student&teacher";
-    $response = file_get_contents($url);
-
-    return json_decode($response, true);
-}
-
 function construirURL(string $baseURL, array $parametros = [])
 {
     if ($baseURL) {

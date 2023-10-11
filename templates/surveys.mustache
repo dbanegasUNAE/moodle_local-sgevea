@@ -1,33 +1,43 @@
-<div class="card">
-    <div class="card-header">Encuestas</div>
-    <div class="card-body">
-        
-        <!-- Si hay registros en 'surveys', se muestra la tabla -->
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>NOMBRE ENCUESTA</th>
-                    <th>FECHA INICIO</th>
-                    <th>FECHA FIN</th>
-                    <th>REQUERIDA</th>
-                    <th>ESTADO</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#surveys}}
-                <tr id='{{id}}'>
-                    <td>{{name}}</td>
-                    <td>{{startdate}}</td>
-                    <td>{{enddate}}</td>
-                    <td>{{required}}</td>
-                    <td>{{status}}</td>
-                </tr>
-                {{/surveys}}
-            </tbody>
-        </table>
-        {{^surveys}}
-        <!-- Cuando NO hay registros en 'surveys' -->
-        <p>No hay encuestas disponibles en este momento.</p>
-        {{/surveys}}
+<div class="border-top pt-5">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Encuestas</h5>
+            {{#viewlist}}
+            <!-- Si hay registros en 'surveys', se muestra la tabla -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>NOMBRE ENCUESTA</th>
+                        <th>FECHA INICIO</th>
+                        <th>FECHA FIN</th>
+                        <th>REQUERIDA</th>
+                        <th>ESTADO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#surveys}}
+                    <tr id='{{id}}'>
+                        <td>{{name}}</td>
+                        <td>{{startdate}}</td>
+                        <td>{{enddate}}</td>
+                        <td>{{required}}</td>
+                        <td>{{status}}</td>
+                    </tr>
+                    {{/surveys}}
+                </tbody>
+            </table>
+            {{/viewlist}}
+            {{^viewlist}}
+                <!-- Cuando NO hay registros en 'surveys' -->
+                <div class="alert alert-light">{{nosurveys}}</div>
+            {{/viewlist}}
+
+            {{#error}}
+            <div class="error-message">
+                {{error}}
+            </div>
+            {{/error}}
+
+        </div>
     </div>
 </div>

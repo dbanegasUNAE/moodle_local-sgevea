@@ -4,7 +4,7 @@ namespace local_sgevea;
 
 defined('MOODLE_INTERNAL') || die();
 
-class survey_renderer
+class surveyRenderer
 {
 
     private $page;
@@ -20,7 +20,8 @@ class survey_renderer
         $data = null;
         if ($surveys && is_array($surveys)) {
             $data = [
-                'surveys' => []
+                'surveys' => [],
+                'viewlist' => true
             ];
             foreach ($surveys as $survey) {
                 $data['surveys'][] = [
@@ -32,6 +33,11 @@ class survey_renderer
                     'status' => $survey['STATUS'] ? get_string('survstatusyes', 'local_sgevea') : get_string('survstatusno', 'local_sgevea')
                 ];
             }
+        } else {
+            $data = [
+                'viewlist' => false,
+                'nosurveys' => get_string('survlistempty', 'local_sgevea')
+            ];
         }
         return $OUTPUT->render_from_template('local_sgevea/surveys', $data);
     }

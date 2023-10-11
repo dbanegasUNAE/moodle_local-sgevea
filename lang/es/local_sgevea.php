@@ -4,6 +4,8 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'SGEVEA';
 
+#DASHBOARD PLUGIN
+
 $string['dashboard'] = 'Dashboard';
 $string['dashboard_courses'] = 'Dashboard Cursos';
 $string['dashboard_users'] = 'Dashboard Usuarios';
@@ -23,14 +25,22 @@ $string['dashboard_teachers_tabledata'] = 'Cursos';
 $string['dashboard_teachers_tableid'] = 'ID';
 $string['dashboard_teachers_tablecount'] = 'N. Cursos';
 
+# SGEVEA API
+
 $string['settings'] = 'Configuraciones';
 $string['generalsettings'] = 'Configuraciones Generales';
 $string['surveysettings'] = 'APP Encuestas configuraciones';
 $string['announcementsettings'] = 'APP Anuncios configuraciones';
 
-$string['token'] = 'Token';
-$string['status'] = 'Status';
-$string['apiurl'] = 'API URL';
+$string['survey_tit'] = 'Encuestas';
+$string['survey_token'] = 'Token';
+$string['survey_status'] = 'Estado';
+$string['survey_apiurl'] = 'API URL';
+
+$string['ann_tit'] = 'Anuncios';
+$string['ann_token'] = 'Token';
+$string['ann_status'] = 'Estado';
+$string['ann_apiurl'] = 'API URL';
 
 $string['survreqyes'] = 'SI';
 $string['survreqno'] = 'NO';
@@ -43,5 +53,8 @@ $string['visualizarformulario'] = 'Visualizar formulario';
 
 $string['visualizaranuncio'] = 'Visualizar modal';
 
+$string['survlistempty'] = 'No hay encuestas disponibles';
+
 #General Texts
 $string['generated'] = 'Generado el';
+$string['error'] = 'Existe un problema';

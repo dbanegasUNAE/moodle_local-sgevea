@@ -1,6 +1,6 @@
 <?php
 // Inicialización y obtención de encuestas.
-$manager2 = new \local_sgevea\survey_manager();
+$manager2 = new \local_sgevea\surveyManager();
 $survey = $manager2->getOne();
 
 //dep($survey);
