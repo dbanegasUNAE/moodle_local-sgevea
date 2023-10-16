@@ -101,6 +101,26 @@ class usage {
     }
 
     /**
+     * Return server's cpu usage
+     *
+     * @return float cpu usage
+     */
+    public function get_cpu_cores() {
+        $load = 0;
+        if (stripos(PHP_OS, 'win') !== false) {
+            $numberOfCores = shell_exec("wmic cpu get NumberOfCores /value");
+            $corenums = trim(str_replace("NumberOfCores=", "", $numberOfCores));
+        } else if (stripos(PHP_OS, 'linux') !== false) {
+            if (isset(self::$disabled['cpu'])) {
+                return $load;
+            }
+            $loads    = sys_getloadavg();
+            $corenums = trim(shell_exec("grep -P '^processor' /proc/cpuinfo|wc -l"));
+        }
+        return $corenums;
+    }
+
+    /**
      * Return server's memory usage
      *
      * @return float memory usage
