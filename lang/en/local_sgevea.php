@@ -8,7 +8,7 @@ $string['pluginname'] = 'SGEVEA';
 
 $string['dashboard'] = 'Dashboard';
 $string['dashboard_courses'] = 'Courses Dashboard';
-$string['dashboard_users'] = 'Users Dashboard';
+$string['dashboard_users'] = 'Users Access Dashboard';
 $string['dashboard_teachers'] = 'Teachers Dashboard';
 
 $string['dashboardsettings'] = 'Dashboard Settings';
@@ -24,6 +24,19 @@ $string['dashboard_teachers_tablename'] = 'Teacher';
 $string['dashboard_teachers_tabledata'] = 'Courses';
 $string['dashboard_teachers_tableid'] = 'ID';
 $string['dashboard_teachers_tablecount'] = 'Count Courses';
+
+$string['dashboarduseraccesssettings'] = 'Dashboard - User Access Settings';
+$string['dashboard_useraccess_viewday_graph'] = 'Graph Type days view';
+$string['dashboard_useraccess_viewday_graph_des'] = 'chart.js types: line, bar ...';
+$string['dashboard_useraccess_viewhour_graph'] = 'Graph Type hours view';
+$string['dashboard_useraccess_viewhour_graph_des'] = 'chart.js types: line, bar ...';
+
+$string['dashboard_users_view'] = 'View type';
+$string['dashboard_users_view_dates'] = 'by dates';
+$string['dashboard_users_view_hours'] = 'by hours';
+$string['dashboard_users_view_startdate'] = 'Start date';
+$string['dashboard_users_view_enddate'] = 'End Date';
+$string['dashboard_users_view_show'] = 'Filter';
 
 # SGEVEA API
 

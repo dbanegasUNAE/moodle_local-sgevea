@@ -3,6 +3,27 @@
        {{> local_sgevea/dashboard_toolbar}}
     </div>
 </div>
+<form class="form-inline">
+    <div class="form-group mb-2">
+        <label for="view" class="mr-2">{{optiontit}}</label>
+        <select id="view" name="view" class="form-control">
+            {{#options}}
+              <option value="{{value}}" {{select}}>{{name}}</option>
+            {{/options}}
+        </select>
+    </div>
+    <div class="form-group mb-2">
+        <label for="start_date" class="mr-2">{{optionstartdate}}</label>
+        <input type="date" id="start_date" name="start_date" class="form-control" value="{{startDate}}">
+    </div>
+    <div class="form-group mb-2">
+        <label for="end_date" class="mr-2">{{optionenddate}}</label>
+        <input type="date" id="end_date" name="end_date" class="form-control" value="{{endDate}}">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">{{optionsshow}}</button>
+</form>
+
+
 <div class="container">
     <canvas id="myChart" width="600" height="300"></canvas>
 </div>
@@ -18,11 +39,11 @@
 
 var chartDataElement = document.getElementById('chartData');
 var chartData = JSON.parse(chartDataElement.textContent);
-
+console.log(chartData);
 const ctx = document.getElementById('myChart');
 
 new Chart(ctx, {
-    type: 'bar',
+    type: '{{graph}}',
     data: {
       labels: chartData.labels,
       datasets: [{
@@ -31,7 +52,7 @@ new Chart(ctx, {
         borderWidth: 1,
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
-        fill: false
+        fill: false,
       }]
     },
     options: {

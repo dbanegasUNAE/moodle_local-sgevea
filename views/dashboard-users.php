@@ -25,8 +25,26 @@ $PAGE->requires->js(new moodle_url('/local/sgevea/libraries/chart.js/cdn.jsdeliv
 
 
 echo $OUTPUT->header();
+// Obtiene los parámetros del formulario.
+$view = optional_param('view', 'date_range', PARAM_TEXT);
+$start_date = optional_param('start_date', null, PARAM_TEXT);
+$end_date = optional_param('end_date', null, PARAM_TEXT);
 
-$dashboardUsers = new \local_sgevea\DashboardUsers();
+// Verifica si los parámetros están configurados y proporciona valores predeterminados si no lo están.
+if (is_null($start_date)) {
+    $start_date = strtotime(date('Y-m-d 00:00:00'));
+}
+if (is_null($end_date)) {
+    $end_date = strtotime(date('Y-m-d 23:59:59'));
+}
+
+// Crea una instancia de la clase DashboardUsers con los parámetros.
+$dashboardUsers = new \local_sgevea\DashboardUsers($start_date, $end_date);
+
+// Luego, dependiendo del valor de $view, puedes configurar la vista en la clase DashboardUsers.
+$dashboardUsers->setView($view);
+
 echo $dashboardUsers->render();
+
 
 echo $OUTPUT->footer();

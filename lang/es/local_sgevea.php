@@ -8,7 +8,7 @@ $string['pluginname'] = 'SGEVEA';
 
 $string['dashboard'] = 'Dashboard';
 $string['dashboard_courses'] = 'Dashboard Cursos';
-$string['dashboard_users'] = 'Dashboard Usuarios';
+$string['dashboard_users'] = 'Dashboard Usuarios Accesos';
 $string['dashboard_teachers'] = 'Dashboard Profesores';
 
 $string['dashboardsettings'] = 'Configuraciones del Dashboard';
@@ -24,6 +24,19 @@ $string['dashboard_teachers_tablename'] = 'Profesores';
 $string['dashboard_teachers_tabledata'] = 'Cursos';
 $string['dashboard_teachers_tableid'] = 'ID';
 $string['dashboard_teachers_tablecount'] = 'N. Cursos';
+
+$string['dashboarduseraccesssettings'] = 'Configuraciones del Dashboard - Usuarios Accesos';
+$string['dashboard_useraccess_viewday_graph'] = 'Tipo de gráfico vista dias';
+$string['dashboard_useraccess_viewday_graph_des'] = 'tipos chart.js: line, bar ...';
+$string['dashboard_useraccess_viewhour_graph'] = 'Tipo de gráfico vista horas';
+$string['dashboard_useraccess_viewhour_graph_des'] = 'tipos chart.js: line, bar ...';
+
+$string['dashboard_users_view'] = 'Tipo de Visualización';
+$string['dashboard_users_view_dates'] = 'Por fechas';
+$string['dashboard_users_view_hours'] = 'Por horas';
+$string['dashboard_users_view_startdate'] = 'Fecha Inicio';
+$string['dashboard_users_view_enddate'] = 'Fecha Fin';
+$string['dashboard_users_view_show'] = 'Filtrar';            
 
 # SGEVEA API
 

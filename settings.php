@@ -65,4 +65,9 @@ if ($hassiteconfig && has_capability('local/sgevea:manage', context_system::inst
         get_string('dashboard_teachers_showsummary_desc', 'local_sgevea'),
         0
     ));
+    
+    //TODO: Settings DASHBOARD USER ACCESS TEST
+    $settings->add(new admin_setting_heading('dashboarduseraccesssettings', get_string('dashboarduseraccesssettings', 'local_sgevea'), ''));
+    $settings->add(new admin_setting_configtext('local_sgevea/dashboard_useraccess_viewday_graph', get_string('dashboard_useraccess_viewday_graph', 'local_sgevea'), get_string('dashboard_useraccess_viewday_graph_des', 'local_sgevea'), 'bar'));
+    $settings->add(new admin_setting_configtext('local_sgevea/dashboard_useraccess_viewhour_graph', get_string('dashboard_useraccess_viewhour_graph', 'local_sgevea'), get_string('dashboard_useraccess_viewhour_graph_des', 'local_sgevea'), 'line'));
 }
