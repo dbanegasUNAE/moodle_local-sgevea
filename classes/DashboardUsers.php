@@ -145,8 +145,6 @@ class DashboardUsers extends Dashboard
             $this->graph = get_config('local_sgevea', 'dashboard_useraccess_viewhour_graph');
             $data = $this->getAccessCountByHourRange();
         }
-        print_r($this->graph);
-
         foreach ($data as $entry) {
             $labels[] = $entry->hour; // Ajusta esto según tus datos
             $values[] = $entry->user_count; // Ajusta esto según tus datos
