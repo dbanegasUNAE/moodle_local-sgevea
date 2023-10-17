@@ -38,10 +38,19 @@ $string['dashboard_users_view_startdate'] = 'Start date';
 $string['dashboard_users_view_enddate'] = 'End Date';
 $string['dashboard_users_view_show'] = 'Filter';
 
-# SGEVEA API
+# GENERAL SETTINGS
 
 $string['settings'] = 'Settings';
 $string['generalsettings'] = 'General Settings';
+$string['generalsettings_my_bottom'] = 'Enable Bottom content';
+$string['generalsettings_my_bottom_cont'] = 'Bottom Content';
+$string['generalsettings_my_bottom_desc'] = 'Html content for bottom in my/';
+$string['generalsettings_my_top'] = 'Enable Top content';
+$string['generalsettings_my_top_cont'] = 'Top content';
+$string['generalsettings_my_top_desc'] = 'Html content for top in my/';
+
+# SGEVEA API
+
 $string['surveysettings'] = 'APP Survey settings';
 $string['announcementsettings'] = 'APP Announce settings';
 

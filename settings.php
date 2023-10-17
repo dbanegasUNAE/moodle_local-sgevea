@@ -25,8 +25,14 @@ if ($hassiteconfig && has_capability('local/sgevea:manage', context_system::inst
 
     // Encabezado para configuraciones generales
     $settings->add(new admin_setting_heading('generalsettings', get_string('generalsettings', 'local_sgevea'), ''));
-
-
+    //CONTENT OF TOP MY
+    $settings->add(new admin_setting_configcheckbox('local_sgevea/generalsettings_my_top', get_string('generalsettings_my_top', 'local_sgevea'), '', 1));
+    $settings->add(new admin_setting_configtextarea('local_sgevea/generalsettings_my_top_cont', get_string('generalsettings_my_top_cont', 'local_sgevea'), get_string('generalsettings_my_top_desc', 'local_sgevea'), '', PARAM_RAW, 10));
+    //CONTENT OF BOTTOM MY
+    $settings->add(new admin_setting_configcheckbox('local_sgevea/generalsettings_my_bottom', get_string('generalsettings_my_bottom', 'local_sgevea'), '', 1));
+    $settings->add(new admin_setting_configtextarea('local_sgevea/generalsettings_my_bottom_cont', get_string('generalsettings_my_bottom_cont', 'local_sgevea'), get_string('generalsettings_my_bottom_desc', 'local_sgevea'), '', PARAM_RAW, 10));
+    //TODO: lang generalsettings_my_top generalsettings_my_top_cont generalsettings_my_top_desc
+    //TODO: lang generalsettings_my_bottom generalsettings_my_bottom_cont generalsettings_my_bottom_desc
 
     // Encabezado para configuraciones de encuestas
     $settings->add(new admin_setting_heading('surveysettings', get_string('surveysettings', 'local_sgevea'), ''));
@@ -65,9 +71,10 @@ if ($hassiteconfig && has_capability('local/sgevea:manage', context_system::inst
         get_string('dashboard_teachers_showsummary_desc', 'local_sgevea'),
         0
     ));
-    
-    //TODO: Settings DASHBOARD USER ACCESS TEST
+    // Encabezado para configuraciones de Dashboard - Acceso Usuarios
     $settings->add(new admin_setting_heading('dashboarduseraccesssettings', get_string('dashboarduseraccesssettings', 'local_sgevea'), ''));
+
+    // Configuración para mostrar el tipo de grafico
     $settings->add(new admin_setting_configtext('local_sgevea/dashboard_useraccess_viewday_graph', get_string('dashboard_useraccess_viewday_graph', 'local_sgevea'), get_string('dashboard_useraccess_viewday_graph_des', 'local_sgevea'), 'bar'));
     $settings->add(new admin_setting_configtext('local_sgevea/dashboard_useraccess_viewhour_graph', get_string('dashboard_useraccess_viewhour_graph', 'local_sgevea'), get_string('dashboard_useraccess_viewhour_graph_des', 'local_sgevea'), 'line'));
 }
