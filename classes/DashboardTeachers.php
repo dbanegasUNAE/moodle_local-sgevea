@@ -70,7 +70,7 @@ class DashboardTeachers extends Dashboard
         return $course->visible;
     }
     /**
-     * Obtiene el tipo de Matriculacion de un usuario en un curso
+     * Obtiene los tipos de Matriculacion de un usuario en un curso
      * 
      * @return string
      */
@@ -86,19 +86,25 @@ class DashboardTeachers extends Dashboard
             'courseid' => $courseId,
             'userid' => $teacherId,
         ];
-        $enrol = $DB->get_field_sql($sql, $params);
-        switch ($enrol) {
-            case "sgaunaesync":
-                $name = "SGA";
-                break;
-            case "manual":
-                $name = "MM";
-                break;
-            default:
-                $name = "?";
-                break;
+        $enrols = $DB->get_records_sql($sql, $params);
+        $enrolNames = array();
+        foreach ($enrols as $enrol) {
+            switch ($enrol->enrol) {
+                case "sgaunaesync":
+                    $name = "SGA";
+                    break;
+                case "manual":
+                    $name = "MM";
+                    break;
+                default:
+                    $name = "?";
+                    break;
+            }
+            $enrolNames[] = "<span class='badge badge-light' data-toggle='tooltip' data-placement='top' title='{$enrol->enrol}'>{$name}</span>";
         }
-        return "<span class='badge badge-light badgeEnrolType' data-toggle='tooltip' data-placement='top' title='{$enrol}'>{$name}</span>";
+        $result = implode('', $enrolNames);
+
+        return $result;
     }
 
     /**
