@@ -2,6 +2,12 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($hassiteconfig && has_capability('local/sgevea:manage', context_system::instance())) {
+    //LIST OF ROLES FOR SELECT
+    $roles = get_all_roles();
+    $role_options = [];
+    foreach ($roles as $role) {
+        $role_options[$role->id] = $role->shortname;
+    }
 
     // Crear menú principal para el plugin
     $ADMIN->add('modules', new admin_category('sgevea', get_string('pluginname', 'local_sgevea')));
@@ -28,11 +34,11 @@ if ($hassiteconfig && has_capability('local/sgevea:manage', context_system::inst
     //CONTENT OF TOP MY
     $settings->add(new admin_setting_configcheckbox('local_sgevea/generalsettings_my_top', get_string('generalsettings_my_top', 'local_sgevea'), '', 1));
     $settings->add(new admin_setting_configtextarea('local_sgevea/generalsettings_my_top_cont', get_string('generalsettings_my_top_cont', 'local_sgevea'), get_string('generalsettings_my_top_desc', 'local_sgevea'), '', PARAM_RAW, 10));
+    $settings->add(new admin_setting_configmultiselect('local_sgevea/generalsettings_my_top_roles', get_string('generalsettings_my_top_roles', 'local_sgevea'), '', [], $role_options));
     //CONTENT OF BOTTOM MY
     $settings->add(new admin_setting_configcheckbox('local_sgevea/generalsettings_my_bottom', get_string('generalsettings_my_bottom', 'local_sgevea'), '', 1));
     $settings->add(new admin_setting_configtextarea('local_sgevea/generalsettings_my_bottom_cont', get_string('generalsettings_my_bottom_cont', 'local_sgevea'), get_string('generalsettings_my_bottom_desc', 'local_sgevea'), '', PARAM_RAW, 10));
-    //TODO: lang generalsettings_my_top generalsettings_my_top_cont generalsettings_my_top_desc
-    //TODO: lang generalsettings_my_bottom generalsettings_my_bottom_cont generalsettings_my_bottom_desc
+    $settings->add(new admin_setting_configmultiselect('local_sgevea/generalsettings_my_bottom_roles', get_string('generalsettings_my_bottom_roles', 'local_sgevea'), '', [], $role_options));
 
     // Encabezado para configuraciones de encuestas
     $settings->add(new admin_setting_heading('surveysettings', get_string('surveysettings', 'local_sgevea'), ''));

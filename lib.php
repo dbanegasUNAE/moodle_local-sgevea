@@ -1,4 +1,25 @@
 <?php
+function getUserRolesID($idUser)
+{
+    global $DB;
+    // Consulta SQL para obtener los nombres de los roles del usuario
+    $sql = "SELECT r.id, r.shortname 
+        FROM {role} r 
+        JOIN {role_assignments} ra ON ra.roleid = r.id 
+        WHERE ra.userid = :userid 
+        GROUP BY r.shortname";
+    // Ejecutar la consulta
+    $roles = $DB->get_records_sql($sql, array('userid' => $idUser));
+    $roleids = [];
+    if ($roles) {
+
+        // Recorrer los resultados y obtener los nombres de los roles
+        foreach ($roles as $role) {
+            $roleids[] = $role->id;
+        }
+    }
+    return $roleids;
+}
 function construirURL(string $baseURL, array $parametros = [])
 {
     if ($baseURL) {
