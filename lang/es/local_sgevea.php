@@ -36,22 +36,21 @@ $string['dashboard_users_view_dates'] = 'Por fechas';
 $string['dashboard_users_view_hours'] = 'Por horas';
 $string['dashboard_users_view_startdate'] = 'Fecha Inicio';
 $string['dashboard_users_view_enddate'] = 'Fecha Fin';
-$string['dashboard_users_view_show'] = 'Filtrar';            
+$string['dashboard_users_view_show'] = 'Filtrar';
 
 # GENERAL SETTINGS
 
 $string['settings'] = 'Configuraciones';
 $string['generalsettings'] = 'Configuraciones Generales';
-
-//TODO: lang generalsettings_my_top generalsettings_my_top_cont generalsettings_my_top_desc
-//TODO: lang generalsettings_my_bottom generalsettings_my_bottom_cont generalsettings_my_bottom_desc
-
 $string['generalsettings_my_bottom'] = 'Habilitar contenido inferior';
 $string['generalsettings_my_bottom_cont'] = 'Contenido inferior';
 $string['generalsettings_my_bottom_desc'] = 'Contenido html para ser visualizado en la parte inicial del plugin en el my/';
+$string['generalsettings_my_bottom_roles'] = 'Roles para visualizar contenido inferior';
+
 $string['generalsettings_my_top'] = 'Contenido superior';
 $string['generalsettings_my_top_cont'] = 'Habilitar Contenido superior';
 $string['generalsettings_my_top_desc'] = 'Contenido html para ser visualizado en la parte final del plugin en el my/';
+$string['generalsettings_my_top_roles'] = 'Roles para visualizar contenido superior';
 
 # SGEVEA API
 

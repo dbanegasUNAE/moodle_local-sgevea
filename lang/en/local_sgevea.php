@@ -45,9 +45,12 @@ $string['generalsettings'] = 'General Settings';
 $string['generalsettings_my_bottom'] = 'Enable Bottom content';
 $string['generalsettings_my_bottom_cont'] = 'Bottom Content';
 $string['generalsettings_my_bottom_desc'] = 'Html content for bottom in my/';
+$string['generalsettings_my_bottom_roles'] = 'Roles can view bottom content';
+
 $string['generalsettings_my_top'] = 'Enable Top content';
 $string['generalsettings_my_top_cont'] = 'Top content';
 $string['generalsettings_my_top_desc'] = 'Html content for top in my/';
+$string['generalsettings_my_top_roles'] = 'Roles can view top content';
 
 # SGEVEA API
 
